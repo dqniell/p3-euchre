@@ -232,7 +232,8 @@ Suit Suit_next(Suit suit) {
   }
 }
 
-
+//EFFECTS Returns true if a is lower value than b.  Uses trump to determine
+// order, as described in the spec.
 bool Card_less(const Card &a, const Card &b, Suit trump) {
     if (a.is_trump(trump) && !b.is_trump(trump)) {
         return false;

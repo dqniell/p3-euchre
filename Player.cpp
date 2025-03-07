@@ -76,8 +76,6 @@ class SimplePlayer : public Player {
             }
             hand.erase(hand.begin() + index_of_lowest);
         }
-    //When a Simple Player leads a trick, they play the highest non-trump card in their hand. If they have only trump cards, they play the highest trump card in their hand.
-
 
         Card lead_card(Suit trump) override {
             Card highest = hand[0];
@@ -223,7 +221,7 @@ class HumanPlayer : public Player {
                 hand.erase(hand.begin() + play_index);
                 return chosen_card;
             }
-            
+
             return hand[0]; 
 
         }
@@ -233,17 +231,14 @@ class HumanPlayer : public Player {
 
 Player * Player_factory(const std::string &name, 
                         const std::string &strategy) {
-  // We need to check the value of strategy and return 
-  // the corresponding player type.
+
   if (strategy == "Simple") {
-    // The "new" keyword dynamically allocates an object.
     return new SimplePlayer(name);
   }
   if (strategy == "Human") {
     return new HumanPlayer(name);
   }
 
-  // Invalid strategy if we get here
   assert(false);
   return nullptr;
 }
